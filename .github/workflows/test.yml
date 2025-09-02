@@ -6,3 +6,15 @@ jobs:
     steps:
       - name: Message de test
         run: echo "✅ Job exécuté depuis le runner auto-hébergé"
+
+      - name: Créer un fichier texte
+        run: echo "Ceci est un fichier généré" > output/test.txt
+
+      - name: Lister les fichiers
+        run: tree .
+
+      - name: Upload artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fichier-genere
+          path: output/test.txt
